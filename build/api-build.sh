@@ -6,5 +6,5 @@
 mkdir -p build
 pushd build
 cmake -G "Unix Makefiles" ..
-make -j8 all
+make -j2 all
 popd

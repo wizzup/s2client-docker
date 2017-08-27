@@ -1,32 +1,13 @@
-FROM ubuntu:16.04
-MAINTAINER jrepp@blizzard.com
+FROM s2client-base
 
-# Update the image with required build packages
-RUN \
-  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
-  apt-get update && \
-  apt-get -y upgrade && \
-  apt-get install -y \
-    net-tools \
-    build-essential \
-    clang \
-    cmake \
-    curl  \
-    git  \
-    htop  \
-    libidn11  \
-    libz-dev \
-    libssl-dev \
-    make \
-    python-minimal \
-    software-properties-common \
-    unzip \
-    vim \
-    wget
+# clone api repo
+WORKDIR /
+RUN git clone --recursive https://github.com/Blizzard/s2client-api
 
-# Add the code
+# prebuid the api
 WORKDIR /s2client-api
-ADD downloads/s2client-api .
-ADD api-*.sh /s2client-api/
+COPY api-build.sh .
+RUN ./api-build.sh
 
 ENTRYPOINT [ "/bin/bash" ]
+LABEL maintainer="jrepp@blizzard.com"
