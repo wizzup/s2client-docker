@@ -1,10 +1,15 @@
-FROM s2client-game
-FROM s2client-api
+FROM sc2-game
+FROM sc2-api
 
 WORKDIR /
 COPY --from=0 /StarCraftII /StarCraftII
 
-WORKDIR /s2client-api
+WORKDIR /build
+COPY build-api.sh /build
+RUN sh /build/build-api.sh
 
-ENTRYPOINT [ "/bin/bash" ]
-LABEL maintainer="jrepp@blizzard.com"
+COPY builder.py /build
+
+ENTRYPOINT [ "./builder.py" ]
+
+LABEL maintainer="wizzup@gmail.com"

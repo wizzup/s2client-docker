@@ -1,8 +1,6 @@
 FROM sc2-base
 
-# copy game to /StarCraftII
-WORKDIR /
-COPY downloads/3.16.1/ .
+COPY s2client-api /s2client-api
 
 ENTRYPOINT [ "/bin/bash" ]
 

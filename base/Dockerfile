@@ -24,4 +24,5 @@ RUN \
     wget
 
 ENTRYPOINT [ "/bin/bash" ]
-LABEL maintainer="jrepp@blizzard.com"
+
+LABEL maintainer="wizzup@gmail.com"
