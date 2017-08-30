@@ -14,10 +14,9 @@ Use `master` branch for official way.
 
 ## Build single image
 
-    ./script/build-base.sh
-    ./script/build-game.sh
-    ./script/build-api.sh
-    ./script/build-dev.sh
+    ./script/build-XXX.sh
+
+where XXX ∈ { base, game, api, dev }
 
 # Images
 
@@ -48,6 +47,3 @@ I don't want to use `docker volume` as `upstream` did.
 
     cd /build/api
     cmake /s2client-api
-
-TODO:
- * sc2-dev : upload bot source interface.
